@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,265 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+ */
+
+/* general styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #e6fcf5;
+}
+
+ul {
+  list-style: none;
+}
+
+.py {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.px {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.btn-sm {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+
+  border-radius: 10px;
+}
+
+.btn {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  padding: 1.2rem 1.6rem;
+
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: #51cf66;
+  color: #fff;
+}
+.btn-secondary {
+  background-color: #3bc9db;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #2b8a3e;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #22b8cf;
+  color: #fff;
+}
+
+.vertical {
+  border-left: 6px solid black;
+  height: 600px;
+  position: absolute;
+  left: 55%;
+}
+.error {
+  height: 3rem;
+  width: 50rem;
+  color: red;
+  font-size: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #000;
+  font-weight: bold;
+}
+
+/* navbar */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.menu-items {
+  display: flex;
+  gap: 4rem;
+  /* justify-content: flex-end; */
+}
+
+/* Dashboard */
+
+.main-container {
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 3rem;
+  row-gap: 3rem;
+}
+
+.pizza-content {
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  /* margin: 0 2rem; */
+  font-size: 1.5rem;
+  gap: 2rem;
+  padding-bottom: 1rem;
+}
+
+.pizza-content-text {
+  padding-left: 1rem;
+}
+
+.pizza-content-text h2 {
+  margin-bottom: 1rem;
+}
+
+.pizza-img {
+  height: 15rem;
+  /* width: 15rem; */
+}
+
+.pizza-action {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.price {
+  background-color: #51cf66;
+  color: #fff;
+  padding: 0.8rem 1rem;
+}
+/* Customise Page */
+
+.Customise-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  /* grid-template-columns: 1fr auto 1fr; */
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 3rem;
+  row-gap: 3rem;
+}
+
+.Customise-page div > h1 {
+  margin-bottom: 2rem;
+}
+
+.customise-dropdowns > select {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.veggies-main {
+  margin: 3rem 0;
+}
+.veggies-main > h2 {
+  margin-bottom: 2rem;
+}
+
+.veggies-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.meat-main {
+  margin: 3rem 0;
+}
+.meat-main > h2 {
+  margin-bottom: 2rem;
+}
+
+.meat-item-heading {
+  font-size: 2rem;
+}
+
+.meat-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Cart page */
+
+.Cart-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.Cart-price > h2 {
+  font-size: 2rem;
+}
+
+.cart-price-btn {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+/* Login page */
+
+.login-container {
+  max-width: 600px;
+  margin: 0 auto;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  font-size: 1.2rem;
+}
+
+.user-input input {
+  width: 100%;
+  padding: 1rem;
+}
+.user-input h1 {
+  margin: 1rem 0;
+}
+
+/* .user-input {
+  flex: 1;
+} */
+
+.btn-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.btn-login > button {
+  padding: 1.5rem 4rem;
+  margin-top: 2rem;
+  font-size: 2rem;
 }
