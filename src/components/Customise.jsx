@@ -57,6 +57,8 @@ const Customise = () => {
 
     console.log("clicked");
 
+    dispatch(AddonOrder());
+
     //  dispatch(
     //     AddonOrder({
     //       name: ingredient,
@@ -65,15 +67,15 @@ const Customise = () => {
     //   );
     // distpatchAddition(ingredient, updatedVeggies);
 
-    if (updatedVeggies[ingredient]) {
-      const NewVeggies = [...veggies];
-      NewVeggies.push(ingredient);
-      setVeggies(NewVeggies);
-      console.log(veggies);
-    } else {
-      const filterveggies = veggies.filter((veggie) => veggie !== ingredient);
-      setVeggies(filterveggies);
-    }
+    // if (updatedVeggies[ingredient]) {
+    //   const NewVeggies = [...veggies];
+    //   NewVeggies.push(ingredient);
+    //   setVeggies(NewVeggies);
+    //   console.log(veggies);
+    // } else {
+    //   const filterveggies = veggies.filter((veggie) => veggie !== ingredient);
+    //   setVeggies(filterveggies);
+    // }
   };
 
   // const distpatchAddition = (ingredient, updatedVeggies) => {
