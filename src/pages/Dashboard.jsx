@@ -2,7 +2,7 @@ import React from "react";
 // import { NavLink } from "react-router-dom";
 
 const Dashboard = ({ history }) => {
-  console.log("history ::", history);
+  // console.log("history ::", history);
   return (
     <>
       <main className="main-container">
@@ -41,7 +41,7 @@ const Dashboard = ({ history }) => {
 
               {/* <button className="btn btn-primary">Add to Cart</button>
                */}
-              <h3 className="price">Price:Rs 600</h3>
+              <h3 className="price">Price:Rs 799</h3>
             </div>
           </div>
           <div className="pizza-content">
@@ -78,7 +78,7 @@ const Dashboard = ({ history }) => {
 
               {/* <button className="btn btn-primary">Add to Cart</button>
                */}
-              <h3 className="price">Price:Rs 600</h3>
+              <h3 className="price">Price:Rs 599</h3>
             </div>
           </div>
           <div className="pizza-content">
@@ -115,7 +115,7 @@ const Dashboard = ({ history }) => {
 
               {/* <button className="btn btn-primary">Add to Cart</button>
                */}
-              <h3 className="price">Price:Rs 600</h3>
+              <h3 className="price">Price:Rs 599</h3>
             </div>
           </div>
           <div className="pizza-content">
@@ -152,7 +152,7 @@ const Dashboard = ({ history }) => {
 
               {/* <button className="btn btn-primary">Add to Cart</button>
                */}
-              <h3 className="price">Price:Rs 600</h3>
+              <h3 className="price">Price:Rs 999</h3>
             </div>
           </div>
           <div className="pizza-content">
@@ -189,7 +189,7 @@ const Dashboard = ({ history }) => {
 
               {/* <button className="btn btn-primary">Add to Cart</button>
                */}
-              <h3 className="price">Price:Rs 600</h3>
+              <h3 className="price">Price:Rs 399</h3>
             </div>
           </div>
         </section>

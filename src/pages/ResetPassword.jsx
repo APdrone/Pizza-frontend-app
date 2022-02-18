@@ -26,8 +26,8 @@ const ResetPassword = () => {
 
     try {
       const resp = await fetch(
-        // `http://127.0.0.1:4000/api/v1/users/resetPassword/${match.params.id}`,
-        `https://pizzalover-backend-app.herokuapp.com/api/v1/users/resetPassword/${match.params.id}`,
+        `http://127.0.0.1:4000/api/v1/users/resetPassword/${match.params.id}`,
+        // `https://pizzalover-backend-app.herokuapp.com/api/v1/users/resetPassword/${match.params.id}`,
 
         {
           method: "Patch",

@@ -1,5 +1,5 @@
 import React from "react";
-import Dashboard from "./Dashboard";
+import Dashboard from "../pages/Dashboard";
 import Navigation from "./Navigation";
 
 const Home = ({ history }) => {

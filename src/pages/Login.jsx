@@ -2,9 +2,13 @@ import React from "react";
 // import Navigation from "./Navigation";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logIn } from "../store/userSlice";
 
 const Login = ({ history }) => {
   // const [loggedin, setLoggedIn] = useState(false);
+
+  const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -18,21 +22,22 @@ const Login = ({ history }) => {
     };
     // console.log(username, password);
     try {
-      // const resp = await fetch("http://127.0.0.1:4000/api/v1/users/login", {
-      const resp = await fetch(
-        "https://pizzalover-backend-app.herokuapp.com/api/v1/users/login",
-        {
-          method: "POST",
-          body: JSON.stringify(creds),
-          headers: { "Content-type": "application/json; charset=UTF-8" },
-        }
-      );
+      const resp = await fetch("http://127.0.0.1:4000/api/v1/users/login", {
+        // const resp = await fetch(
+        //   "https://pizzalover-backend-app.herokuapp.com/api/v1/users/login",
+        //  {
+        method: "POST",
+        body: JSON.stringify(creds),
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      });
       if (!resp.ok) throw new Error(`${resp.status}`);
       const data = await resp.json();
-
+      // console.log("data from API ::", data);
       if (data.role === "user") {
+        dispatch(logIn(data.name));
         history.push("/home");
       } else if (data.role === "admin") {
+        dispatch(logIn(data.name));
         history.push("/admin/home");
       }
       // setLoggedIn(true);

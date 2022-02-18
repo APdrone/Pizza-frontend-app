@@ -1,14 +1,117 @@
 import React from "react";
 import CartPrice from "./CartPrice";
 import Navigation from "./Navigation";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { AddOrder, AddonOrder } from "../store/cartSlice";
+import Addon from "./Addon";
 
 const Customise = () => {
-  const submitForm = () => {
-    console.log("submit form");
+  const dispatch = useDispatch();
+
+  const totalVeggies = {
+    "Grilled Mushrooms": false,
+    Onion: false,
+    Capsicum: false,
+    "Fresh Tomato": false,
+    Jalapeno: false,
+    "Golden corn": false,
   };
 
-  const handleChange = () => {
-    console.log("handle change");
+  const totalMeat = {
+    "Barbecue Chicken": false,
+    "Peri - Peri Chicken": false,
+    "Grilled Chicken Rasher": false,
+    "Chicken Tikka": false,
+    "Chicken Pepperoni": false,
+    "Chicken Sausage": false,
+  };
+
+  const [base, setBase] = useState("");
+  const [sauce, setSauce] = useState("");
+  const [cheesetype, setCheeseType] = useState("");
+  const [veggies, setVeggies] = useState([]);
+  const [meats, setMeats] = useState([]);
+  const [addVeggies, setAddVeggies] = useState(totalVeggies);
+  const [addMeat, setAddMeat] = useState(totalMeat);
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log("submit form");
+    const cart = {
+      pizzabase: base || "New Hand Tossed",
+      sauce: sauce || "Red",
+      cheese: cheesetype || "Mozzarella",
+      veggies,
+      meats,
+    };
+    console.log(cart);
+
+    dispatch(AddOrder(cart));
+  };
+
+  const handleVeggiesClick = (ingredient) => {
+    const updatedVeggies = { ...addVeggies };
+    updatedVeggies[ingredient] = !updatedVeggies[ingredient];
+    setAddVeggies(updatedVeggies);
+
+    console.log("clicked");
+
+    //  dispatch(
+    //     AddonOrder({
+    //       name: ingredient,
+    //       addIngredient: updatedVeggies[ingredient],
+    //     })
+    //   );
+    // distpatchAddition(ingredient, updatedVeggies);
+
+    if (updatedVeggies[ingredient]) {
+      const NewVeggies = [...veggies];
+      NewVeggies.push(ingredient);
+      setVeggies(NewVeggies);
+      console.log(veggies);
+    } else {
+      const filterveggies = veggies.filter((veggie) => veggie !== ingredient);
+      setVeggies(filterveggies);
+    }
+  };
+
+  // const distpatchAddition = (ingredient, updatedVeggies) => {
+  //   dispatch(
+  //     AddonOrder({
+  //       name: ingredient,
+  //       addIngredient: updatedVeggies[ingredient],
+  //     })
+  //   );
+  // };
+
+  const handleMeatClick = (ingredient) => {
+    const updatedMeats = { ...addMeat };
+    updatedMeats[ingredient] = !updatedMeats[ingredient];
+    // console.log(updatedVeggies);
+    setAddMeat(updatedMeats);
+    // console.log("addVeggies ::", addVeggies);
+  };
+
+  const handleChange = ({ target: { name, value } }) => {
+    // console.log("handle change", e.target.name);
+    switch (name) {
+      case "base": {
+        setBase(value);
+        break;
+      }
+      case "Sauce": {
+        setSauce(value);
+        break;
+      }
+      case "CheeseType": {
+        setCheeseType(value);
+        break;
+      }
+      default: {
+        console.log("none");
+      }
+    }
   };
 
   return (
@@ -25,7 +128,7 @@ const Customise = () => {
                 name="Base"
                 id="Base"
                 className=""
-                //   value={Base}
+                value={base}
                 onChange={handleChange}
               >
                 <option value="New Hand Tossed">New Hand Tossed</option>
@@ -65,67 +168,82 @@ const Customise = () => {
                 <option value="Feta">Feta</option>
               </select>
             </div>
+            <button className="btn btn-primary " type="submit">
+              Add to Cart
+            </button>
           </form>
           <div className="veggies-main">
             <h2>Veggies</h2>
             <div className="veggies-item">
-              <div>
-                <h2>Grilled Mushrooms</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Onion</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Capsicum</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Fresh Tomato</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Jalapeno</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Golden corn</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
+              <Addon
+                name={"Grilled Mushrooms"}
+                handlefn={handleVeggiesClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"onion"}
+                handlefn={handleVeggiesClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"Capsicum"}
+                handlefn={handleVeggiesClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"Fresh Tomato"}
+                handlefn={handleVeggiesClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"Jalapeno"}
+                handlefn={handleVeggiesClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"Golden corn"}
+                handlefn={handleVeggiesClick}
+                veggies={addVeggies}
+              />
             </div>
           </div>
           <div className="meat-main">
             <h2 className="meat-item-heading">Meat</h2>
             <div className="meat-item">
-              <div>
-                <h2>Barbecue Chicken</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Peri - Peri Chicken</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Grilled Chicken Rasher</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Chicken Tikka</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Chicken Pepperoni</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
-              <div>
-                <h2>Chicken Sausage</h2>
-                <button className="btn-sm ">Add</button>
-              </div>
+              <Addon
+                name={"Barbecue Chicken"}
+                handlefn={handleMeatClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"Peri - Peri Chicken"}
+                handlefn={handleMeatClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"Grilled Chicken Rasher"}
+                handlefn={handleMeatClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"Chicken Tikka"}
+                handlefn={handleMeatClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"Chicken Pepperoni"}
+                handlefn={handleMeatClick}
+                veggies={addVeggies}
+              />
+              <Addon
+                name={"Chicken Sausage"}
+                handlefn={handleMeatClick}
+                veggies={addVeggies}
+              />
             </div>
           </div>
         </div>
-        <div class="vertical"></div>
+        <div className="vertical"></div>
         <div>
           <CartPrice />
         </div>

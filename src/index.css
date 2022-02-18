@@ -46,6 +46,10 @@ ul {
   padding-right: 2rem;
 }
 
+.font-xl {
+  font-size: 3.6rem;
+}
+
 .btn-sm {
   text-decoration: none;
   border: none;
@@ -105,6 +109,13 @@ ul {
   font-weight: bold;
 }
 
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
 /* navbar */
 
 .navbar {
@@ -117,7 +128,19 @@ ul {
 .menu-items {
   display: flex;
   gap: 4rem;
+  align-items: center;
   /* justify-content: flex-end; */
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 4rem;
+  height: 4rem;
 }
 
 /* Dashboard */
